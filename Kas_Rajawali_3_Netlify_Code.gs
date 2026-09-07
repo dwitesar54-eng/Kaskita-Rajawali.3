@@ -380,7 +380,12 @@ function validateSettings_(p, data) {
     data.periodMeta = Array.isArray(data.periodMeta) ? data.periodMeta : [];
     if (data.periodMeta.length) data.periodMeta[0].iuranNominal = Math.round(n);
   }
-  if (p.adminWa !== undefined) data.settings.adminWa = String(p.adminWa || '').replace(/[^0-9+]/g, '').slice(0, 20);
+  if (p.adminWa !== undefined) {
+    let wa = String(p.adminWa || '').replace(/[^0-9]/g, '');
+    if (wa.indexOf('62') === 0) wa = '0' + wa.slice(2);
+    if (wa.indexOf('8') === 0) wa = '0' + wa;
+    data.settings.adminWa = wa.slice(0, 20);
+  }
   if (p.periodeCutoffList !== undefined) {
     if (!Array.isArray(p.periodeCutoffList) || !p.periodeCutoffList.length || p.periodeCutoffList.length > CFG.MAX_PERIODS) throw new Error('Daftar periode tidak valid.');
     data.settings.periodeCutoffList = p.periodeCutoffList.map(x => text_(x, 'Nama periode', CFG.MAX_PERIOD));

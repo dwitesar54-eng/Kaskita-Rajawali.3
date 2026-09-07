@@ -56,3 +56,6 @@ https://kasrajawali3.netlify.app
 Halaman tidak lagi dibungkus UI Google Apps Script, sehingga banner:
 "This application was created by a Google Apps Script user"
 tidak muncul.
+
+
+WhatsApp Bendahara: nomor Indonesia boleh disimpan sebagai 085156908621. Saat membuka WhatsApp, aplikasi otomatis mengubahnya menjadi format internasional 6285156908621 yang sesuai untuk wa.me.
